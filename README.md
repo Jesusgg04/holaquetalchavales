@@ -6,7 +6,7 @@
  * Jesus Luna
  */
 
-// Funciones principales
+// Funciones principales(aqui se definen las funciones)
 
 
 function getCeldas(rango) {
@@ -110,3 +110,9 @@ function ejecutarTodo() {
   ls('c'); // Busca correos
   // lsV("CALLE", "DELANTE"); // Ejemplo vialidad
 }
+
+### ¿Cómo funciona el código? (Flujo de trabajo)
+
+# **Paso 1 - Recolección:** El programa toma todos los datos del INEGI que están en la hoja principal.
+# **Paso 2 - Inspección:** Revisa negocio por negocio. Si el negocio tiene la información que buscamos (teléfono, correo o calle), lo guarda. Si no, lo ignora.
+# **Paso 3 - Entrega:** Crea una hoja nueva y pega ahí solamente los negocios que encontramos, avisando al usuario cuando el proceso termina.
