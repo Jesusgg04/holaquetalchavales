@@ -8,6 +8,7 @@
 
 // Funciones principales
 
+
 function getCeldas(rango) {
   var hoja = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   // Si no hay rango, toma toda la hoja con datos automáticamente
@@ -15,19 +16,23 @@ function getCeldas(rango) {
   return hoja.getRange(rango).getValues();
 }
 
+
 function setCelda(zelda, balor) {
   var hoja = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   if (zelda) { hoja.getRange(zelda).setValue(balor); }
 }
 
+
 // Primera funcion (metodos de contactto)
+
 
 function ls(arg) {
   var tabla = getCeldas("A:AV"); 
   var encabezados = tabla[0];
   var resultados = [encabezados];
 
-  // Aqui se "cuenta" en que columna está el sitio Web, Correo y Telefono(Numero real - 1, ya que la columna A siempre es 0)
+// Aqui se "cuenta" en que columna está el sitio Web, Correo y Telefono(Numero real - 1, ya que la columna A siempre es 0)
+
   var colTel = 27;    // Columna AB
   var colCorreo = 28; // Columna AC
   var colWeb = 29;    // Columna AD
@@ -48,14 +53,18 @@ function ls(arg) {
 
     if (cumple) { resultados.push(fila); }
   }
+  
   enviarAHoja(resultados, "Reporte_Contacto_" + arg);
 }
 
+
 // Funcion 2 Viabilidad
+
 
 function lsV(tipoVialidad, nombreVialidad) {
   var tabla = getCeldas("A:AV");
   var resultados = [tabla[0]];
+
 
   // Columna de viabilidad y nombre de ella(6 y 7)
   var colTipo = 6;
@@ -68,15 +77,18 @@ function lsV(tipoVialidad, nombreVialidad) {
     var t = fila[colTipo].toString().toLowerCase().trim();
     var n = fila[colNombre].toString().toLowerCase().trim();
 
-    // Filtra por tipo exacto y que el nombre contenga el texto buscado
+
+  // Filtra por tipo exacto y que el nombre contenga el texto buscado
     if (t == tipoVialidad.toLowerCase().trim() && n.indexOf(nombreVialidad.toLowerCase().trim()) > -1) {
       resultados.push(fila);
     }
+    
   }
   enviarAHoja(resultados, "Reporte_Vialidad");
 }
 
-// --- FUNCIÓN DE APOYO PARA ESCRIBIR RESULTADOS ---
+
+// Funcion para que los resultados se escriban
 
 function enviarAHoja(matriz, nombreHoja) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -91,7 +103,7 @@ function enviarAHoja(matriz, nombreHoja) {
   }
 }
 
-// --- BOTÓN DE PRUEBA (EJECUTA ESTA) ---
+// Prueba
 
 function ejecutarTodo() {
   // Aquí pruebas la que quieras
